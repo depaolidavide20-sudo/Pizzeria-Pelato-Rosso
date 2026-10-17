@@ -43,6 +43,14 @@
     tabs.forEach(item => { const active = item === tab; item.setAttribute('aria-selected', String(active)); item.tabIndex = active ? 0 : -1; });
     currentCategory = tab.dataset.category; expanded = false;
     panel.setAttribute('aria-labelledby', tab.id); renderMenu();
+    // Mantiene la categoria selezionata visibile nella barra mobile senza muovere la pagina.
+    const list = tab.parentElement;
+    if (list.scrollWidth > list.clientWidth) {
+      const left = tab.offsetLeft, right = left + tab.offsetWidth;
+      if (left < list.scrollLeft || right > list.scrollLeft + list.clientWidth) {
+        list.scrollTo({ left: Math.max(0, left - (list.clientWidth - tab.offsetWidth) / 2), behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+      }
+    }
   }
   tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => selectTab(tab));

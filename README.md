@@ -30,4 +30,8 @@ scena e la barra spaziatrice per avviare o fermare. La preferenza di movimento r
 disattiva animazioni e avanzamento automatico. Anche il logo e le fotografie del
 carosello nel menu sono quelli forniti per il progetto.
 
+Il tema nero con testi centrati è in `theme.css`. Su mobile le categorie del menu
+scorrono orizzontalmente su una riga; la selezione funziona anche con le frecce
+da tastiera. La CTA della copertina è rossa e i testi hanno contrasto adattato alle foto.
+
 Questa copia è indipendente dall’hosting Sites e non include la sua configurazione.
