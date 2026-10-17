@@ -5,9 +5,7 @@
   const track = root.querySelector('.cinema-track');
   const slides = Array.from(track.children);
   const pauseButton = document.getElementById('cinema-pause');
-  const current = document.getElementById('cinema-current');
   const title = document.getElementById('cinema-title');
-  const progress = root.querySelector('.cinema-progress span');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const clone = slides[0].cloneNode(true);
   clone.setAttribute('aria-hidden', 'true');
@@ -38,9 +36,7 @@
       slide.setAttribute('aria-hidden', String(!active));
     });
     clone.classList.toggle('is-active', position === slides.length);
-    current.textContent = String(realPosition + 1).padStart(2, '0');
     title.textContent = slides[realPosition].dataset.title;
-    progress.style.width = ((realPosition + 1) / slides.length * 100) + '%';
     title.setAttribute('aria-live', canPlay() ? 'off' : 'polite');
   }
   function jumpTo(index) {

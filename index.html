@@ -10,12 +10,12 @@
   <link rel="preload" as="image" href="assets/hero-impasto-desktop.jpg" media="(min-width: 761px)" fetchpriority="high">
   <link rel="preload" as="image" href="assets/hero-impasto-mobile.jpg" media="(max-width: 760px)" fetchpriority="high">
   <link rel="stylesheet" href="site.css?v=7">
-  <link rel="stylesheet" href="refinements.css?v=7">
-  <link rel="stylesheet" href="hero.css?v=2">
+  <link rel="stylesheet" href="refinements.css?v=8">
+  <link rel="stylesheet" href="hero.css?v=3">
   <script src="business.js?v=7" defer></script>
-  <script src="site.js?v=7" defer></script>
-  <script src="carousel.js?v=7" defer></script>
-  <script src="hero.js?v=2" defer></script>
+  <script src="site.js?v=8" defer></script>
+  <script src="carousel.js?v=8" defer></script>
+  <script src="hero.js?v=3" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Vai al contenuto</a>
@@ -30,7 +30,7 @@
     </div>
   </header>
   <main id="main">
-    <section class="immersive-hero" id="hero-cinema" aria-labelledby="hero-title" aria-roledescription="carosello" data-duration="2500" data-fade="700" data-zoom="1.045">
+    <section class="immersive-hero" id="hero-cinema" aria-labelledby="hero-title" aria-roledescription="carosello" tabindex="0" aria-describedby="hero-instructions" aria-keyshortcuts="Space ArrowLeft ArrowRight Home End" data-duration="2500" data-fade="700" data-zoom="1.045">
       <h1 class="hero-accessible" id="hero-title">Pelato Rosso — pizzeria d’asporto a Genova</h1>
       <!-- Modifica qui titoli e sottotitoli. Ogni scena usa solo la coppia di foto fornita. -->
       <div class="hero-scene is-active" id="hero-scene-1" data-scene="1" role="group" aria-roledescription="diapositiva" aria-label="1 di 3" aria-hidden="false">
@@ -43,7 +43,7 @@
           <h2 class="hero-story-heading">Ogni storia nasce da un impasto.</h2>
           <div class="hero-story-details">
             <p class="hero-story-subtitle">Farina sulle mani, una storia da condividere. Tutto comincia qui.</p>
-            <a class="hero-scene-link" href="#menu">Scopri il menu <span aria-hidden="true">↗</span></a>
+            <a class="hero-scene-link" href="#menu">Scopri il menu</a>
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@
           <h2 class="hero-story-heading">La semplicità prende forma.</h2>
           <div class="hero-story-details">
             <p class="hero-story-subtitle">Pomodoro, cura e piccoli gesti. Il piacere è nelle cose essenziali.</p>
-            <a class="hero-scene-link" href="#menu">Scopri il menu <span aria-hidden="true">↗</span></a>
+            <a class="hero-scene-link" href="#menu">Scopri il menu</a>
           </div>
         </div>
       </div>
@@ -71,24 +71,11 @@
           <h2 class="hero-story-heading">Il gusto diventa emozione.</h2>
           <div class="hero-story-details">
             <p class="hero-story-subtitle">Una pizza da portare via. Un momento da tenere con te.</p>
-            <a class="hero-scene-link" href="#menu">Scopri il menu <span aria-hidden="true">↗</span></a>
+            <a class="hero-scene-link" href="#menu">Scopri il menu</a>
           </div>
         </div>
       </div>
-      <div class="hero-navigation" hidden>
-        <div class="hero-playback">
-          <div class="hero-indicators" role="group" aria-label="Scegli una scena della copertina">
-            <button class="hero-indicator" type="button" data-hero-select="0" aria-label="Scena 1: Ogni storia nasce da un impasto." aria-current="true" aria-controls="hero-scene-1"><span class="hero-progress-track" aria-hidden="true"><span class="hero-progress-fill"></span></span></button>
-            <button class="hero-indicator" type="button" data-hero-select="1" aria-label="Scena 2: La semplicità prende forma." aria-current="false" aria-controls="hero-scene-2"><span class="hero-progress-track" aria-hidden="true"><span class="hero-progress-fill"></span></span></button>
-            <button class="hero-indicator" type="button" data-hero-select="2" aria-label="Scena 3: Il gusto diventa emozione." aria-current="false" aria-controls="hero-scene-3"><span class="hero-progress-track" aria-hidden="true"><span class="hero-progress-fill"></span></span></button>
-          </div>
-          <button class="hero-pause" type="button" aria-label="Metti in pausa il carosello della copertina" aria-pressed="false">
-            <svg class="hero-pause-glyph" viewBox="0 0 20 20" aria-hidden="true"><path d="M7 5v10M13 5v10"/></svg>
-            <svg class="hero-play-glyph" viewBox="0 0 20 20" aria-hidden="true"><path d="m7 5 8 5-8 5z"/></svg>
-          </button>
-        </div>
-        <a class="hero-scroll-link" href="#menu"><span>Scorri per scoprire</span><span aria-hidden="true">↓</span></a>
-      </div>
+      <p class="hero-accessible" id="hero-instructions">Usa le frecce per cambiare immagine e la barra spaziatrice per avviare o fermare il carosello. Su touch puoi scorrere le immagini lateralmente.</p>
       <p class="hero-accessible" role="status" aria-live="polite" aria-atomic="true"></p>
     </section>
 
@@ -109,8 +96,7 @@
               <figure class="cinema-slide" role="group" aria-roledescription="diapositiva" aria-label="7 di 7 · Dal nostro forno" aria-hidden="true" data-title="Dal nostro forno"><img src="assets/dal-forno.jpg" alt="Due preparazioni salate dorate nelle confezioni da asporto" width="1122" height="1402" loading="lazy" decoding="async"></figure>
             </div>
             <div class="cinema-shade" aria-hidden="true"></div>
-            <div class="cinema-bottom"><div class="cinema-caption"><span class="cinema-counter" aria-hidden="true"><span id="cinema-current">01</span> / 07</span><p id="cinema-title">La Margherita</p></div><div class="cinema-controls"><button type="button" id="cinema-pause" aria-label="Metti in pausa il carosello" aria-pressed="false"><svg class="pause-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M7 5v10M13 5v10"/></svg><svg class="play-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="m7 5 8 5-8 5z"/></svg></button><button type="button" id="cinema-prev" aria-label="Mostra il prodotto precedente"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m12 5-5 5 5 5"/></svg></button><button type="button" id="cinema-next" aria-label="Mostra il prodotto successivo"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m8 5 5 5-5 5"/></svg></button></div></div>
-            <div class="cinema-progress" aria-hidden="true"><span></span></div>
+            <div class="cinema-bottom"><div class="cinema-caption"><p id="cinema-title">La Margherita</p></div><div class="cinema-controls"><button type="button" id="cinema-pause" aria-label="Metti in pausa il carosello" aria-pressed="false"><svg class="pause-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M7 5v10M13 5v10"/></svg><svg class="play-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="m7 5 8 5-8 5z"/></svg></button><button type="button" id="cinema-prev" aria-label="Mostra il prodotto precedente"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m12 5-5 5 5 5"/></svg></button><button type="button" id="cinema-next" aria-label="Mostra il prodotto successivo"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m8 5 5 5-5 5"/></svg></button></div></div>
           </div><p class="image-caption"><span>IL BELLO È SCEGLIERE.</span><span aria-hidden="true">↗</span></p></div>
         <div class="menu-content">
           <div class="menu-tabs" role="tablist" aria-label="Categorie del menu">
@@ -150,7 +136,7 @@
       <div class="faq"><details><summary>Come posso ordinare? <span aria-hidden="true">+</span></summary><p id="faq-order">Usa i recapiti in questa sezione per contattare la pizzeria, scegliere le pizze e concordare il ritiro.</p></details><details><summary>Dove trovo il menu aggiornato? <span aria-hidden="true">+</span></summary><p id="faq-menu">Trovi le proposte e i prezzi nella sezione “Il menu”, divisi per categoria. Usa “Mostra tutte le proposte” per leggere una categoria completa.</p></details></div>
     </section>
   </main>
-  <footer class="footer"><div class="footer-top"><a class="footer-brand" href="#top" aria-label="Pelato Rosso, torna all’inizio"><img src="assets/pelato-rosso-logo.png" alt="Pelato Rosso" width="2172" height="724" loading="lazy"></a><p>PIZZA DA ASPORTO.<br><span>MOMENTI DA TENERE.</span></p><a href="#top" class="back-top" aria-label="Torna all’inizio">↑</a></div><div class="footer-bottom"><p>© <span id="copyright-year">2026</span> Pelato Rosso · Genova</p><nav aria-label="Navigazione footer"><a href="#menu">Il menu</a><a href="#contatti">Contatti</a><button type="button" id="privacy-open">Privacy</button></nav><span class="footer-signoff">CON UN TOCCO DI <span>ROSSO.</span></span></div></footer>
+  <footer class="footer"><div class="footer-top"><a class="footer-brand" href="#top" aria-label="Pelato Rosso, torna all’inizio"><img src="assets/pelato-rosso-logo.png" alt="Pelato Rosso" width="2172" height="724" loading="lazy"></a><p>PIZZA DA ASPORTO.<br><span>MOMENTI DA TENERE.</span></p><a href="#top" class="back-top" aria-label="Torna all’inizio"><span aria-hidden="true">↑</span><span class="back-top-label">Torna su</span></a></div><div class="footer-bottom"><p>© <span id="copyright-year">2026</span> Pelato Rosso · Genova</p><nav aria-label="Navigazione footer"><a href="#menu">Il menu</a><a href="#contatti">Contatti</a><button type="button" id="privacy-open">Privacy</button></nav><span class="footer-signoff">CON UN TOCCO DI <span>ROSSO.</span></span></div></footer>
   <dialog id="privacy-dialog" aria-labelledby="privacy-title"><div class="dialog-top"><span class="eyebrow">PELATO ROSSO</span><button type="button" id="privacy-close" aria-label="Chiudi l’informativa">×</button></div><h2 id="privacy-title">Privacy del sito</h2><p>Questo sito vetrina non contiene moduli per inviare dati personali e non utilizza strumenti di analisi o cookie di marketing propri.</p><p>Gli eventuali link a servizi esterni, come le mappe, aprono siti con le proprie informative. Per informazioni sui servizi di hosting consulta <a href="https://openai.com/it-IT/policies/privacy-policy/" target="_blank" rel="noopener noreferrer">l’informativa del fornitore</a>.</p><p class="privacy-note">Per informazioni: Pelato Rosso, Corso Monte Grappa 136-38R, Genova. Telefono: 347 007 2416.</p></dialog>
 </body>
 </html>

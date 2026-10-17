@@ -9,11 +9,6 @@
   const zoomTo = Number(root.dataset.zoom) || 1.045;
   const scenes = Array.from(root.querySelectorAll('.hero-scene'));
   const images = scenes.map(scene => scene.querySelector('.hero-scene-image'));
-  const buttons = Array.from(root.querySelectorAll('[data-hero-select]'));
-  const fills = buttons.map(button => button.querySelector('.hero-progress-fill'));
-  const controls = root.querySelector('.hero-navigation');
-  const playback = root.querySelector('.hero-playback');
-  const pause = root.querySelector('.hero-pause');
   const status = root.querySelector('[role="status"]');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   let current = 0;
@@ -21,7 +16,6 @@
   let userPaused = false;
   let explicitPlay = false;
   let focusInside = false;
-  let controlsHovered = false;
   let inView = true;
   let ready = false;
   let loading = false;
@@ -34,12 +28,11 @@
   let destroyed = false;
   root.style.setProperty('--hero-fade', fadeDuration + 'ms');
   function canPlay() {
-    return ready && !destroyed && !loading && !userPaused && !reduced.matches && inView && !document.hidden && (explicitPlay || (!focusInside && !controlsHovered));
+    return ready && !destroyed && !loading && !userPaused && !reduced.matches && inView && !document.hidden && (explicitPlay || !focusInside);
   }
   function time(now = performance.now()) { return Math.min(duration, elapsed + (playing ? now - startedAt : 0)); }
   function paint(value) {
     const fraction = Math.max(0, Math.min(value / duration, 1));
-    fills[current].style.transform = 'scaleX(' + (reduced.matches ? 1 : fraction) + ')';
     images[current].style.transform = 'scale(' + (reduced.matches ? 1 : 1 + (zoomTo - 1) * fraction).toFixed(5) + ')';
   }
   function stop() {
@@ -61,9 +54,6 @@
     frame = requestAnimationFrame(tick);
   }
   function updatePlayback() {
-    pause.hidden = reduced.matches;
-    pause.setAttribute('aria-pressed', String(userPaused));
-    pause.setAttribute('aria-label', userPaused ? 'Riprendi il carosello della copertina' : 'Metti in pausa il carosello della copertina');
     root.dataset.reducedMotion = String(reduced.matches);
     if (canPlay()) {
       if (!playing) {
@@ -88,8 +78,6 @@
       const active = i === index;
       scene.setAttribute('aria-hidden', String(!active));
       scene.inert = !active;
-      buttons[i].setAttribute('aria-current', String(active));
-      fills[i].style.transform = 'scaleX(' + (i < index ? 1 : 0) + ')';
     });
     paint(elapsed);
   }
@@ -142,26 +130,39 @@
     warmNext();
     updatePlayback();
   }
-  buttons.forEach((button, index) => {
-    button.addEventListener('click', () => { explicitPlay = false; void show(index, true); });
-    button.addEventListener('keydown', event => {
-      let next;
-      if (event.key === 'ArrowRight') next = (index + 1) % scenes.length;
-      if (event.key === 'ArrowLeft') next = (index - 1 + scenes.length) % scenes.length;
-      if (event.key === 'Home') next = 0;
-      if (event.key === 'End') next = scenes.length - 1;
-      if (next !== undefined) { event.preventDefault(); explicitPlay = false; buttons[next].focus(); void show(next, true); }
-    });
+  // La hero resta navigabile senza indicatori o pulsanti visibili.
+  root.addEventListener('keydown', event => {
+    if (event.target !== root) return;
+    let next;
+    if (event.key === 'ArrowRight') next = (current + 1) % scenes.length;
+    if (event.key === 'ArrowLeft') next = (current - 1 + scenes.length) % scenes.length;
+    if (event.key === 'Home') next = 0;
+    if (event.key === 'End') next = scenes.length - 1;
+    if (next !== undefined) {
+      event.preventDefault(); explicitPlay = false; void show(next, true);
+    } else if (event.key === ' ' && !reduced.matches) {
+      event.preventDefault();
+      const resume = !playing;
+      userPaused = !resume; explicitPlay = resume;
+      updatePlayback();
+      status.textContent = resume ? 'Carosello avviato.' : 'Carosello in pausa.';
+    }
   });
-  pause.addEventListener('click', () => {
-    userPaused = !userPaused;
-    explicitPlay = !userPaused;
-    updatePlayback();
+  let touchStart;
+  root.addEventListener('pointerdown', event => {
+    if (event.pointerType === 'touch' && !event.target.closest('a, button')) touchStart = { x: event.clientX, y: event.clientY };
   });
+  root.addEventListener('pointerup', event => {
+    if (!touchStart) return;
+    const dx = event.clientX - touchStart.x, dy = event.clientY - touchStart.y;
+    touchStart = undefined;
+    if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+      explicitPlay = false; void show(current + (dx < 0 ? 1 : -1), true);
+    }
+  });
+  root.addEventListener('pointercancel', () => { touchStart = undefined; });
   root.addEventListener('focusin', () => { focusInside = true; explicitPlay = false; updatePlayback(); });
   root.addEventListener('focusout', event => { focusInside = root.contains(event.relatedTarget); updatePlayback(); });
-  playback.addEventListener('mouseenter', () => { controlsHovered = true; explicitPlay = false; updatePlayback(); });
-  playback.addEventListener('mouseleave', () => { controlsHovered = false; updatePlayback(); });
   document.addEventListener('visibilitychange', updatePlayback);
   reduced.addEventListener('change', () => {
     stop(); elapsed = 0;
@@ -177,7 +178,6 @@
   if (header && 'ResizeObserver' in window) new ResizeObserver(sizeHero).observe(header);
   window.addEventListener('pagehide', () => { stop(); destroyed = true; });
   window.addEventListener('pageshow', event => { if (event.persisted) { destroyed = false; updatePlayback(); } });
-  controls.hidden = false;
   select(0);
   void (async () => {
     await ensureImage(0);

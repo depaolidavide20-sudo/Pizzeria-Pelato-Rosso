@@ -24,8 +24,9 @@ Il prezzo di 7,50 € della farinata con un ingrediente è un esempio ed è indi
 come tale nel sito. La copertina usa tre coppie di immagini desktop/mobile fornite
 per il progetto, con dissolvenze e testi sincronizzati. Modifica titoli e sottotitoli
 nelle tre `.hero-scene` di `index.html`; i tempi sono negli attributi `data-*` della
-sezione. Stili e comportamento sono in `hero.css` e `hero.js`. La navigazione manuale
-e il pulsante pausa sono accessibili da tastiera; la preferenza di movimento ridotto
+sezione. Stili e comportamento sono in `hero.css` e `hero.js`. La hero non ha overlay,
+indicatori o pulsante di pausa; usa le frecce da tastiera o lo swipe per cambiare
+scena e la barra spaziatrice per avviare o fermare. La preferenza di movimento ridotto
 disattiva animazioni e avanzamento automatico. Anche il logo e le fotografie del
 carosello nel menu sono quelli forniti per il progetto.
 
