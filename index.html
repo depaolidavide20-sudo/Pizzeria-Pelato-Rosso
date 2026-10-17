@@ -7,12 +7,15 @@
   <meta name="description" content="Pelato Rosso, pizzeria d’asporto a Genova. La pizza, il tuo momento. Scopri il nostro mondo e le proposte del menu.">
   <title>Pelato Rosso — La pizza. Il tuo momento.</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preload" as="image" href="assets/hero-pizza-slice-v1.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/hero-impasto-desktop.jpg" media="(min-width: 761px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/hero-impasto-mobile.jpg" media="(max-width: 760px)" fetchpriority="high">
   <link rel="stylesheet" href="site.css?v=7">
   <link rel="stylesheet" href="refinements.css?v=7">
+  <link rel="stylesheet" href="hero.css?v=2">
   <script src="business.js?v=7" defer></script>
   <script src="site.js?v=7" defer></script>
   <script src="carousel.js?v=7" defer></script>
+  <script src="hero.js?v=2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Vai al contenuto</a>
@@ -27,21 +30,66 @@
     </div>
   </header>
   <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-top"><p class="eyebrow"><span class="red-dot"></span>Pizzeria d’asporto · Genova</p><span class="hero-edition">IL GUSTO DI STARE BENE / 01</span></div>
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <h1 id="hero-title">LA PIZZA.<br>IL TUO<br><span>MOMENTO.</span></h1>
-          <div class="hero-description"><span class="small-cross" aria-hidden="true">✳</span><p>A casa, con gli amici, dove ti va.<br>Il bello della pizza è portarla con te.</p></div>
-          <div class="hero-actions"><a class="button button-red" href="#menu">Scopri il menu <span aria-hidden="true">↗</span></a><a class="text-link" href="#asporto">Come funziona <span aria-hidden="true">→</span></a></div>
-        </div>
-        <div class="hero-visual">
-          <div class="image-caption"><span>IL TUO PROSSIMO MORSO.</span><span aria-hidden="true">↘</span></div>
-          <div class="hero-photo hero-shot"><img class="hero-campaign-image" src="assets/hero-pizza-slice-v1.jpg" alt="Una mano solleva una fetta di pizza Margherita con mozzarella filante su sfondo rosso" width="1254" height="1254" fetchpriority="high" decoding="async"></div>
-          <p class="photo-footnote"><span>La tua prossima serata comincia qui.</span><span aria-hidden="true">01 / PR</span></p>
+    <section class="immersive-hero" id="hero-cinema" aria-labelledby="hero-title" aria-roledescription="carosello" data-duration="2500" data-fade="700" data-zoom="1.045">
+      <h1 class="hero-accessible" id="hero-title">Pelato Rosso — pizzeria d’asporto a Genova</h1>
+      <!-- Modifica qui titoli e sottotitoli. Ogni scena usa solo la coppia di foto fornita. -->
+      <div class="hero-scene is-active" id="hero-scene-1" data-scene="1" role="group" aria-roledescription="diapositiva" aria-label="1 di 3" aria-hidden="false">
+        <picture class="hero-scene-picture">
+          <source media="(max-width: 760px)" srcset="assets/hero-impasto-mobile.jpg" width="941" height="1672">
+          <img class="hero-scene-image" src="assets/hero-impasto-desktop.jpg" alt="Tre panetti di impasto infarinati sul marmo, illuminati dal sole" width="1672" height="941" fetchpriority="high" loading="eager" decoding="async">
+        </picture>
+        <div class="hero-scene-copy">
+          <p class="hero-kicker">Pelato Rosso · Genova</p>
+          <h2 class="hero-story-heading">Ogni storia nasce da un impasto.</h2>
+          <div class="hero-story-details">
+            <p class="hero-story-subtitle">Farina sulle mani, una storia da condividere. Tutto comincia qui.</p>
+            <a class="hero-scene-link" href="#menu">Scopri il menu <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
       </div>
-      <div class="hero-bottom"><p>POCHE COSE. FATTE CON GUSTO.</p><a href="#menu">C’è di buono, più sotto <span aria-hidden="true">↓</span></a></div>
+      <div class="hero-scene" id="hero-scene-2" data-scene="2" role="group" aria-roledescription="diapositiva" aria-label="2 di 3" aria-hidden="true" inert>
+        <picture class="hero-scene-picture">
+          <source media="(max-width: 760px)" srcset="assets/hero-preparazione-mobile.jpg" width="941" height="1672">
+          <img class="hero-scene-image" src="assets/hero-preparazione-desktop.jpg" alt="Una mano stende il pomodoro sull’impasto della pizza con un cucchiaio" width="1672" height="941" fetchpriority="low" loading="lazy" decoding="async">
+        </picture>
+        <div class="hero-scene-copy">
+          <p class="hero-kicker">Pelato Rosso · Genova</p>
+          <h2 class="hero-story-heading">La semplicità prende forma.</h2>
+          <div class="hero-story-details">
+            <p class="hero-story-subtitle">Pomodoro, cura e piccoli gesti. Il piacere è nelle cose essenziali.</p>
+            <a class="hero-scene-link" href="#menu">Scopri il menu <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scene" id="hero-scene-3" data-scene="3" role="group" aria-roledescription="diapositiva" aria-label="3 di 3" aria-hidden="true" inert>
+        <picture class="hero-scene-picture">
+          <source media="(max-width: 760px)" srcset="assets/hero-emozione-mobile.jpg" width="941" height="1672">
+          <img class="hero-scene-image" src="assets/hero-emozione-desktop.jpg" alt="Pizza Margherita nel cartone da asporto con il logo Pelato Rosso" width="1672" height="941" fetchpriority="low" loading="lazy" decoding="async">
+        </picture>
+        <div class="hero-scene-copy">
+          <p class="hero-kicker">Pelato Rosso · Genova</p>
+          <h2 class="hero-story-heading">Il gusto diventa emozione.</h2>
+          <div class="hero-story-details">
+            <p class="hero-story-subtitle">Una pizza da portare via. Un momento da tenere con te.</p>
+            <a class="hero-scene-link" href="#menu">Scopri il menu <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-navigation" hidden>
+        <div class="hero-playback">
+          <div class="hero-indicators" role="group" aria-label="Scegli una scena della copertina">
+            <button class="hero-indicator" type="button" data-hero-select="0" aria-label="Scena 1: Ogni storia nasce da un impasto." aria-current="true" aria-controls="hero-scene-1"><span class="hero-progress-track" aria-hidden="true"><span class="hero-progress-fill"></span></span></button>
+            <button class="hero-indicator" type="button" data-hero-select="1" aria-label="Scena 2: La semplicità prende forma." aria-current="false" aria-controls="hero-scene-2"><span class="hero-progress-track" aria-hidden="true"><span class="hero-progress-fill"></span></span></button>
+            <button class="hero-indicator" type="button" data-hero-select="2" aria-label="Scena 3: Il gusto diventa emozione." aria-current="false" aria-controls="hero-scene-3"><span class="hero-progress-track" aria-hidden="true"><span class="hero-progress-fill"></span></span></button>
+          </div>
+          <button class="hero-pause" type="button" aria-label="Metti in pausa il carosello della copertina" aria-pressed="false">
+            <svg class="hero-pause-glyph" viewBox="0 0 20 20" aria-hidden="true"><path d="M7 5v10M13 5v10"/></svg>
+            <svg class="hero-play-glyph" viewBox="0 0 20 20" aria-hidden="true"><path d="m7 5 8 5-8 5z"/></svg>
+          </button>
+        </div>
+        <a class="hero-scroll-link" href="#menu"><span>Scorri per scoprire</span><span aria-hidden="true">↓</span></a>
+      </div>
+      <p class="hero-accessible" role="status" aria-live="polite" aria-atomic="true"></p>
     </section>
 
     <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>PIZZA. AMICI. ANCORA PIZZA.</span><i>✳</i><span>GENOVA, CI VEDIAMO A CENA.</span><i>✳</i><span>PIZZA. AMICI. ANCORA PIZZA.</span><i>✳</i><span>GENOVA, CI VEDIAMO A CENA.</span><i>✳</i></div></div>

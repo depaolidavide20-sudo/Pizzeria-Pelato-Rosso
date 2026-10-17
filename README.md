@@ -21,7 +21,12 @@ python3 -m http.server 4173
 
 Per aggiornare menu e recapiti modifica `business.js`.
 Il prezzo di 7,50 € della farinata con un ingrediente è un esempio ed è indicato
-come tale nel sito. La copertina è un’immagine promozionale generata con ImageGen;
-le fotografie del carosello nel menu e il logo sono quelli forniti per il progetto.
+come tale nel sito. La copertina usa tre coppie di immagini desktop/mobile fornite
+per il progetto, con dissolvenze e testi sincronizzati. Modifica titoli e sottotitoli
+nelle tre `.hero-scene` di `index.html`; i tempi sono negli attributi `data-*` della
+sezione. Stili e comportamento sono in `hero.css` e `hero.js`. La navigazione manuale
+e il pulsante pausa sono accessibili da tastiera; la preferenza di movimento ridotto
+disattiva animazioni e avanzamento automatico. Anche il logo e le fotografie del
+carosello nel menu sono quelli forniti per il progetto.
 
 Questa copia è indipendente dall’hosting Sites e non include la sua configurazione.
