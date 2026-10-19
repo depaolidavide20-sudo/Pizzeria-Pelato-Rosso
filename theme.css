@@ -12,8 +12,8 @@ body{--muted:#c5c5c5;--line:#292929}
 .button-dark{background:transparent;color:#fff;border:1px solid #606060}
 .button-dark:hover{background:var(--red);border-color:var(--red)}
 .text-link{border-color:#666}
-.ticker{background:#000;color:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.ticker-track i{color:var(--red)}
+.ticker{background:#fff;color:#000;border-top:1px solid #fff;border-bottom:1px solid #fff}
+.ticker-track i{color:#000}
 .menu-content{min-width:0;text-align:center}
 .menu-tabs{position:relative;justify-content:center}
 .menu-tabs button{color:#fff}
@@ -87,4 +87,24 @@ dialog p{color:#e1e1e1}
   .faq{margin-top:34px}
   .footer-top>p{margin:0;width:auto;order:initial}
   .footer-signoff{margin:0;width:auto}
+}
+
+/* Il carosello introduce il listino, con la stessa sequenza su ogni schermo. */
+.menu-layout{grid-template-columns:minmax(0,1fr);justify-items:center;gap:40px}
+.menu-visual{position:relative;top:auto;order:0;align-self:auto;width:min(100%,920px)}
+.menu-content{order:1;width:100%;max-width:920px}
+.menu-visual .menu-cinema{aspect-ratio:3/2}
+@media(max-width:760px){
+  html{scroll-padding-top:calc(95px + env(safe-area-inset-top,0px))}
+  .header{position:sticky;top:0;z-index:60;padding-top:env(safe-area-inset-top,0px);background:#000;border-bottom:1px solid #282828}
+  .header-inner{min-height:80px;padding:10px 20px;gap:20px}
+  .header .brand{position:relative;display:block;flex:none;width:156px;height:60px}
+  .header .brand img{position:absolute;top:50%;left:-42px;width:226px;max-width:none;height:auto;transform:translateY(-50%)}
+  .nav-toggle{width:44px;height:44px;margin-left:auto;flex:none;gap:7px;padding:0;border:1px solid #363636}
+  .nav-toggle>span{width:22px;height:1px}
+  .nav-toggle[aria-expanded="true"]>span:first-child{transform:translateY(4px) rotate(45deg)}
+  .nav-toggle[aria-expanded="true"]>span:last-child{transform:translateY(-4px) rotate(-45deg)}
+  .navigation{padding:12px 20px 24px;max-height:calc(100vh - 81px - env(safe-area-inset-top,0px));max-height:calc(100dvh - 81px - env(safe-area-inset-top,0px));overflow-y:auto}
+  .menu-layout{gap:30px}
+  .menu-visual .menu-cinema{aspect-ratio:4/5}
 }

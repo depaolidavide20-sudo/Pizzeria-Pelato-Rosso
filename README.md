@@ -30,7 +30,9 @@ scena e la barra spaziatrice per avviare o fermare. La preferenza di movimento r
 disattiva animazioni e avanzamento automatico. Anche il logo e le fotografie del
 carosello nel menu sono quelli forniti per il progetto.
 
-Il tema nero con testi centrati è in `theme.css`. Su mobile le categorie del menu
+Il tema nero con testi centrati è in `theme.css`. L’header mobile resta visibile
+durante lo scorrimento; la fascia sotto la copertina è bianca con testo nero.
+Il carosello prodotti precede il listino sia su mobile sia su desktop. Su mobile le categorie del menu
 scorrono orizzontalmente su una riga; la selezione funziona anche con le frecce
 da tastiera. La CTA della copertina è rossa e i testi hanno contrasto adattato alle foto.
 
