@@ -108,3 +108,34 @@ dialog p{color:#e1e1e1}
   .menu-layout{gap:30px}
   .menu-visual .menu-cinema{aspect-ratio:4/5}
 }
+
+/* Rifiniture di menu, contatti e footer. */
+.menu-tabs button{font-size:13px;font-weight:600;letter-spacing:.015em}
+.menu-tabs button span{font-weight:500}
+.cinema-accessible{position:absolute!important;clip-path:inset(50%);width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;white-space:nowrap;border:0}
+.product-cinema:focus-visible{outline:2px solid var(--red);outline-offset:4px}
+.story-visual{width:min(100%,540px)}
+.story-photo.section-photo{height:auto;aspect-ratio:auto;object-fit:contain}
+.contact-title-line{display:block;white-space:nowrap}
+.contact-grid h2>.contact-title-line:first-child{color:#fff;font-weight:200}
+.footer{padding-top:24px;padding-bottom:20px;border-top:1px solid var(--line)}
+.footer-top{flex-direction:row;justify-content:center;align-items:center;gap:28px;padding-bottom:16px}
+.footer-brand{position:relative;width:150px;height:52px;max-width:none}
+.footer-brand img{position:absolute;top:50%;left:-39px;width:208px;max-width:none;height:auto;transform:translateY(-50%)}
+.footer-top>p{font-family:var(--body);font-size:11px;font-weight:400;letter-spacing:.06em;line-height:1.7;text-align:center}
+.footer-top>p>span{font-weight:400}
+.footer-bottom{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:14px 26px;padding-top:16px;font-size:9px}
+.footer-bottom>p{width:auto}
+.footer-signoff{width:auto;margin:0;font-size:8px}
+@media(max-width:760px){
+  .menu-tabs button{font-size:14px;font-weight:600}
+  .menu-tabs button span{font-size:inherit}
+  .contact-grid h2{font-size:clamp(24px,8vw,54px);line-height:1.15}
+  .footer{padding-top:20px;padding-bottom:18px}
+  .footer-top{flex-wrap:nowrap;gap:18px;padding-bottom:14px}
+  .footer-brand{width:128px;height:46px}
+  .footer-brand img{width:180px;left:-34px}
+  .footer-top>p{font-size:9.5px;letter-spacing:.04em;line-height:1.6}
+  .footer-bottom{gap:12px 22px;padding-top:14px}
+  .footer-signoff{font-size:7px;width:auto}
+}

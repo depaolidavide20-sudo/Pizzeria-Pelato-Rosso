@@ -4,7 +4,7 @@
   if (!root) return;
   const track = root.querySelector('.cinema-track');
   const slides = Array.from(track.children);
-  const pauseButton = document.getElementById('cinema-pause');
+  const status = document.getElementById('cinema-status');
   const title = document.getElementById('cinema-title');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const clone = slides[0].cloneNode(true);
@@ -21,7 +21,7 @@
   let inView = true;
   let playRequested = false;
   let timer;
-  const interval = 4000;
+  const interval = 2300;
   function canPlay() { return !paused && (playRequested || (!hovering && !focused)) && inView && !document.hidden && !reducedMotion.matches; }
   function schedule() {
     clearTimeout(timer);
@@ -62,13 +62,16 @@
   track.addEventListener('transitionend', event => { if (event.target === track && event.propertyName === 'transform') settle(); });
   document.getElementById('cinema-prev').addEventListener('click', () => change(-1));
   document.getElementById('cinema-next').addEventListener('click', () => change(1));
-  pauseButton.addEventListener('click', () => {
-    paused = !paused;
-    playRequested = !paused;
-    pauseButton.setAttribute('aria-pressed', String(paused));
-    pauseButton.setAttribute('aria-label', paused ? 'Riprendi il carosello automatico' : 'Metti in pausa il carosello');
-    root.classList.toggle('is-paused', paused);
-    schedule();
+  root.addEventListener('keydown', event => {
+    if (event.target !== root) return;
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      event.preventDefault(); change(event.key === 'ArrowRight' ? 1 : -1);
+    } else if (event.key === ' ' && !reducedMotion.matches) {
+      event.preventDefault();
+      const resume = !root.classList.contains('is-running');
+      paused = !resume; playRequested = resume; schedule();
+      status.textContent = resume ? 'Carosello avviato.' : 'Carosello in pausa.';
+    }
   });
   root.addEventListener('mouseenter', () => { hovering = true; playRequested = false; schedule(); });
   root.addEventListener('mouseleave', () => { hovering = false; schedule(); });

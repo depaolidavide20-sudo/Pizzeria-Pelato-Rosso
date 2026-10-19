@@ -34,6 +34,9 @@ Il tema nero con testi centrati è in `theme.css`. L’header mobile resta visib
 durante lo scorrimento; la fascia sotto la copertina è bianca con testo nero.
 Il carosello prodotti precede il listino sia su mobile sia su desktop. Su mobile le categorie del menu
 scorrono orizzontalmente su una riga; la selezione funziona anche con le frecce
-da tastiera. La CTA della copertina è rossa e i testi hanno contrasto adattato alle foto.
+da tastiera. La CTA della copertina è rossa e ovale, con testo corretto. I titoli bianchi
+hanno ombra e contorno sulle lettere, senza overlay sulle immagini. Il carosello
+prodotti mostra solo le frecce; spazio da tastiera permette pausa e ripresa.
+Il footer è compatto e la sezione storia usa la nuova fotografia della pizza alla pala.
 
 Questa copia è indipendente dall’hosting Sites e non include la sua configurazione.
